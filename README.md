@@ -17,7 +17,7 @@ This project aims to install a self-managed Argo CD using the App of App pattern
 # Clone Repository
 Clone kurtburak/argocd repository to your local device.
 ```
-git clone https://github.com/kurtburak/argocd.git
+git clone https://github.com/alexander-shvalov/argocd.git
 ```
 # Create Local Kubernetes Cluster
 Intall kind.
@@ -64,11 +64,11 @@ server:
   config:
     repositories: |
       - type: git
-        url: https://github.com/kurtburak/argocd.git
+        url: https://github.com/alexander-shvalov/argocd.git
       - name: argo-helm
         type: helm
         url: https://argoproj.github.io/argo-helm
-  additionalApplications: 
+  additionalApplications:
     - name: argocd
       namespace: argocd
       destination:
@@ -82,7 +82,7 @@ server:
           - values.yaml
           - ../values-override.yaml
         path: argocd-install/argo-cd
-        repoURL: https://github.com/kurtburak/argocd.git
+        repoURL: https://github.com/alexander-shvalov/argocd.git
         targetRevision: HEAD
       syncPolicy:
         syncOptions:
@@ -95,7 +95,7 @@ server:
       project: argocd
       source:
         path: argocd-apps
-        repoURL: https://github.com/kurtburak/argocd.git
+        repoURL: https://github.com/alexander-shvalov/argocd.git
         targetRevision: HEAD
         directory:
           recurse: true
@@ -112,7 +112,7 @@ server:
       project: argocd
       source:
         path: argocd-appprojects
-        repoURL: https://github.com/kurtburak/argocd.git
+        repoURL: https://github.com/alexander-shvalov/argocd.git
         targetRevision: HEAD
         directory:
           recurse: true
@@ -121,7 +121,7 @@ server:
         automated:
           selfHeal: true
           prune: true
-  additionalProjects: 
+  additionalProjects:
   - name: argocd
     namespace: argocd
     additionalLabels: {}
@@ -159,10 +159,10 @@ Wait until all pods are running.
 kubectl -n argocd get pods
 
 NAME                                            READY   STATUS    RESTARTS
-argocd-application-controller-bcc4f7584-vsbc7   1/1     Running   0       
-argocd-dex-server-77f6fc6cfb-v844k              1/1     Running   0       
-argocd-redis-7966999975-68hm7                   1/1     Running   0       
-argocd-repo-server-6b76b7ff6b-2fgqr             1/1     Running   0       
+argocd-application-controller-bcc4f7584-vsbc7   1/1     Running   0
+argocd-dex-server-77f6fc6cfb-v844k              1/1     Running   0
+argocd-redis-7966999975-68hm7                   1/1     Running   0
+argocd-repo-server-6b76b7ff6b-2fgqr             1/1     Running   0
 argocd-server-848dbc6cb4-r48qp                  1/1     Running   0
 ```
 
@@ -224,7 +224,7 @@ spec:
   project: sample-project
   source:
     path: sample-app/
-    repoURL: https://github.com/kurtburak/argocd.git
+    repoURL: https://github.com/alexander-shvalov/argocd.git
     targetRevision: HEAD
   syncPolicy:
     syncOptions:
